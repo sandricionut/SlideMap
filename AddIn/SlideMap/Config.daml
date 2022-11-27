@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArcGIS defaultAssembly="SlideMap.dll" defaultNamespace="SlideMap" xmlns="http://schemas.esri.com/DADF/Registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
+	<AddInInfo id="{b649ed1a-e2f3-4edb-9745-9334a2e1a8c0}" version="1.0" desktopVersion="3.0.36056">
+		<Name>SlideMap</Name>
+		<Description>SlideMap description</Description>
+		<Image>Images\AddinDesktop32.png</Image>
+		<Author>SlideMap Team</Author>
+		<Company>University of Bucharest, Faculty of Geography and Esri Romania</Company>
+		<Date>11/24/2022</Date>
+		<Subject>Framework, Geoprocessing</Subject>
+		<!-- Note subject can be one or more of these topics:
+                    Content, Framework, Editing, Geodatabase, Geometry, Geoprocessing, Layouts, Map Authoring, Map Exploration -->
+	</AddInInfo>
+	<modules>
+		<insertModule id="SlideMap_Module" className="SlideMapModule" autoLoad="false" caption="SlideMapModule">
+			<!-- uncomment to have the control hosted on a separate tab-->
+			<tabs>
+				<tab id="SlideMap_Tab1" keytip="B1" caption="SlideMap">
+					<group refID="groupUgCS" />
+					<group refID="groupPhotogrammetryTool" />
+					<group refID="groupFlightControl" />
+					<group refID="groupLFeatures"/>
+					<group refID="groupFMV"/>
+					<group refID="groupLRiskMapping"/>
+				</tab>
+			</tabs>
+			<groups>
+				<!-- comment this out if you have no controls on the Addin tab to avoid
+              an empty group-->
+				<group id="groupUgCS" caption="UgCS" appearsOnAddInTab="false" keytip="G0">
+					<!-- host controls within groups -->
+					<button refID="btnConnectToUgCSServer" size="large" />
+				</group>
+				<group id="groupPhotogrammetryTool" caption="Photogrammetry" appearsOnAddInTab="false" keytip="G1">
+					<button refID="btnCreateFlightPlan" size="large" />
+					<button refID="btnUploadFlight" size="large" />
+				</group>
+				<group id="groupFlightControl" caption="Flight control" appearsOnAddInTab="false" keytip="G1">
+					<button refID="btnArmVehicle" size="large" />
+					<button refID="btnDisarmVehicle" size="large" />
+					<button refID="btnAutoVehicle" size="large" />
+					<button refID="btnHoldVehicle" size="large" />
+					<button refID="btnContinueVehicle" size="large" />
+					<button refID="btnLandVehicle" size="large" />
+					<button refID="btnReturnHomeVehicle" size="large" />
+					<button refID="btnEmergencyLandingVehicle" size="large" />
+				</group>
+				<group id="groupFMV" caption="FMV" appearsOnAddInTab="false" keytip="G0">
+					<!-- host controls within groups -->
+					<button refID="btnFMV" size="large" />
+				</group>
+				<group id="groupLFeatures" caption="Landslide features detection" appearsOnAddInTab="false" keytip="L0">
+					<!-- host controls within groups -->
+					<button refID="btnOpenLandslideFeatureDetection" size="large" />
+				</group>
+				<group id="groupLRiskMapping" caption="Mapping exposure to landslides" appearsOnAddInTab="false" keytip="L0">
+					<!-- host controls within groups -->
+					<button refID="btnOpenRiskTemplate" size="large" />
+					<button refID="btnOpenExposureToLandslides" size="large" />
+				</group>
+			</groups>
+			<controls>
+				<button id="btnFMV" caption="Film geocodat" keytip="B1" className="SlideMap.Handlers.FMVHandler" loadOnClick="true" largeImage="Images\FMV.png">
+					<tooltip heading="Generare film geocodat">Open tool for FMV<disabledText />
+					</tooltip>
+				</button>
+				<button id="btnOpenLandslideFeatureDetection" caption="Map landslide features" keytip="B1" className="SlideMap.Handlers.LandslideFeaturesHandler" loadOnClick="true" largeImage="Images\LandslideFeatures.png">
+					<tooltip heading="Map landslide features">
+						Open tool dialog for mapping landslide features<disabledText />
+					</tooltip>
+				</button>
+				<button id="btnOpenExposureToLandslides" caption="Map exposure to landslides" keytip="B1" className="SlideMap.Handlers.ExposureToLandslidesHandler" loadOnClick="true" largeImage="Images\ExposureLandslides.png">
+					<tooltip heading="Map exposure to landslides">
+						Open tool dialog for mapping exposure to landslides<disabledText />
+					</tooltip>
+				</button>
+				<button id="btnOpenRiskTemplate" caption="Create template for risk mapping" keytip="B1" className="SlideMap.Handlers.CreateTemplateRiskHandler" loadOnClick="true" largeImage="Images\RiskTemplate.png">
+					<tooltip heading="Create risk mapping template">
+						Open tool dialog for risk mapping template<disabledText />
+					</tooltip>
+				</button>
+				<!-- add your controls here -->
+				<button id="btnConnectToUgCSServer" caption="Connect to server" keytip="B1" className="SlideMap.Handlers.ConnectToServerDialogHandler" loadOnClick="true" largeImage="Images\ConnectToServer64.png">
+					<tooltip heading="Connect to UgCS server">
+						Connect to the UgCS server using your credentials.<disabledText />
+					</tooltip>
+				</button>
+				<button id="btnCreateFlightPlan" caption="Create flight plan" keytip="B1" className="SlideMap.Handlers.CreateMissionDialogHandler" loadOnClick="true" largeImage="Images\CreateFlightPlan64.png">
+					<tooltip heading="Create flight plan">
+						Create new or modify existing mission.<disabledText />
+					</tooltip>
+				</button>
+				<button id="btnUploadFlight" caption="Upload flight" keytip="B1" className="SlideMap.Handlers.UploadRouteDialogHandler" loadOnClick="true" largeImage="Images\UploadFlight64.png">
+					<tooltip heading="Upload flight">
+						Upload flight to vehicle.<disabledText />
+					</tooltip>
+				</button>
+				<button id="btnArmVehicle" caption="Arm" keytip="B1" className="SlideMap.Handlers.ArmVehicleHandler" loadOnClick="true" largeImage="Images\Arm64.png">
+					<tooltip heading="Arm">
+						Arm vehicle.<disabledText />
+					</tooltip>
+				</button>
+				<button id="btnDisarmVehicle" caption="Disarm" keytip="B1" className="SlideMap.Handlers.DisarmVehicleHandler" loadOnClick="true" largeImage="Images\Disarm64.png">
+					<tooltip heading="Disarm">
+						Disarm vehicle.<disabledText />
+					</tooltip>
+				</button>
+				<button id="btnAutoVehicle" caption="Auto Mode" keytip="B1" className="SlideMap.Handlers.AutoVehicleHandler" loadOnClick="true" largeImage="Images\AutoMode64.png">
+					<tooltip heading="Auto Mode">
+						Set the vehicle in auto mode.<disabledText />
+					</tooltip>
+				</button>
+				<button id="btnHoldVehicle" caption="Hold" keytip="B1" className="SlideMap.Handlers.HoldVehicleHandler" loadOnClick="true" largeImage="Images\Hold64.png">
+					<tooltip heading="Hold">
+						Hold the vehicle.<disabledText />
+					</tooltip>
+				</button>
+				<button id="btnContinueVehicle" caption="Continue" keytip="B1" className="SlideMap.Handlers.ContinueVehicleHandler" loadOnClick="true" largeImage="Images\Continue64.png">
+					<tooltip heading="Continue">
+						Continue mission.<disabledText />
+					</tooltip>
+				</button>
+				<button id="btnLandVehicle" caption="Land" keytip="B1" className="SlideMap.Handlers.LandVehicleHandler" loadOnClick="true" largeImage="Images\Land64.png">
+					<tooltip heading="Land">
+						Land vehicle.<disabledText />
+					</tooltip>
+				</button>
+				<button id="btnReturnHomeVehicle" caption="Return home" keytip="B1" className="SlideMap.Handlers.ReturnHomeVehicleHandler" loadOnClick="true" largeImage="Images\ReturnHome64.png">
+					<tooltip heading="Return home">
+						Set the vehicle to return home.<disabledText />
+					</tooltip>
+				</button>
+				<button id="btnEmergencyLandingVehicle" caption="Emergency landing" keytip="B1" className="SlideMap.Handlers.EmergencyLandingVehicleHandler" loadOnClick="true" largeImage="Images\EmergencyLanding64.png">
+					<tooltip heading="Emergency landing">
+						Set the vehicle to perform an emergency landing.<disabledText />
+					</tooltip>
+				</button>
+			</controls>
+		</insertModule>
+	</modules>
+</ArcGIS>
